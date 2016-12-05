@@ -18,6 +18,8 @@ class MetalView: MTKView {
     
     private var commandQueue: MTLCommandQueue!
     
+    private var vertexCount: Int = 0
+    
     
     // MARK: Methods
     init(frame: CGRect) {
@@ -45,12 +47,31 @@ class MetalView: MTKView {
         
         // Vertex Buffer を作る
         let vertices = [
-            Vertex(position: [0, 1, 0, 1], color: [1, 1, 0, 1]),
-            Vertex(position: [-1, -1, 0, 1], color: [1, 0, 1, 1]),
-            Vertex(position: [1, -1, 0, 1], color: [0, 1, 1, 1]),
-            ]
+            // 上段
+            Vertex(position: [     0,  0.5, 0, 1], color: [143/255, 195/255, 31/255, 1]),
+            Vertex(position: [-0.375, 0.25, 0, 1], color: [ 34/255, 172/255, 56/255, 1]),
+            Vertex(position: [ 0.375, 0.25, 0, 1], color: [ 34/255, 172/255, 56/255, 1]),
+            // 下段
+            Vertex(position: [-0.25,  0.25, 0, 1], color: [34/255, 172/255, 56/255, 1]),
+            Vertex(position: [ -0.5,     0, 0, 1], color: [ 0/255, 113/255, 48/255, 1]),
+            Vertex(position: [    0,     0, 0, 1], color: [ 0/255, 113/255, 48/255, 1]),
+            Vertex(position: [-0.25,  0.25, 0, 1], color: [34/255, 172/255, 56/255, 1]),
+            Vertex(position: [    0,     0, 0, 1], color: [ 0/255, 113/255, 48/255, 1]),
+            Vertex(position: [ 0.25,  0.25, 0, 1], color: [34/255, 172/255, 56/255, 1]),
+            Vertex(position: [ 0.25,  0.25, 0, 1], color: [34/255, 172/255, 56/255, 1]),
+            Vertex(position: [    0,     0, 0, 1], color: [ 0/255, 113/255, 48/255, 1]),
+            Vertex(position: [  0.5,     0, 0, 1], color: [ 0/255, 113/255, 48/255, 1]),
+            // 幹
+            Vertex(position: [-0.125,     0, 0, 1], color: [168/255,  66/255, 0/255, 1]),
+            Vertex(position: [-0.125, -0.25, 0, 1], color: [172/255, 106/255, 0/255, 1]),
+            Vertex(position: [ 0.125,     0, 0, 1], color: [168/255,  66/255, 0/255, 1]),
+            Vertex(position: [ 0.125,     0, 0, 1], color: [168/255,  66/255, 0/255, 1]),
+            Vertex(position: [-0.125, -0.25, 0, 1], color: [172/255, 106/255, 0/255, 1]),
+            Vertex(position: [ 0.125, -0.25, 0, 1], color: [172/255, 106/255, 0/255, 1]),
+        ]
         
-        let vertexBufferLength = vertices.count * MemoryLayout<Vertex>.size
+        vertexCount = vertices.count
+        let vertexBufferLength = vertexCount * MemoryLayout<Vertex>.size
         vertexBuffer = device.makeBuffer(bytes: UnsafeRawPointer(vertices), length: vertexBufferLength, options: .optionCPUCacheModeWriteCombined)
         
         // Vertex shader, Fragment shader を指定する
@@ -96,14 +117,14 @@ class MetalView: MTKView {
             let colorAttachment = renderPassDescriptor.colorAttachments[0]
             colorAttachment?.texture = drawable.texture
             colorAttachment?.loadAction = .clear
-            colorAttachment?.clearColor = MTLClearColorMake(1, 0, 0, 1)
+            colorAttachment?.clearColor = MTLClearColorMake(1, 1, 1, 1)
             
             // CommandBufferを生成、三角形を描く
             let commandBuffer = commandQueue.makeCommandBuffer()
             let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
             renderEncoder.setRenderPipelineState(piplineState)
             renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, at: 0)
-            renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3, instanceCount: 1)
+            renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertexCount, instanceCount: 1)
             renderEncoder.endEncoding()
             
             // Present
