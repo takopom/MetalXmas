@@ -15,6 +15,9 @@
 		497B78871DF13BCF002A6268 /* MetalXmasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B78861DF13BCF002A6268 /* MetalXmasUITests.swift */; };
 		497B789E1DF3E6AC002A6268 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 497B789B1DF3E6AC002A6268 /* Shaders.metal */; };
 		497B789F1DF3E6AC002A6268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B789D1DF3E6AC002A6268 /* ViewController.swift */; };
+		497B78A21DF4FE64002A6268 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B78A11DF4FE64002A6268 /* MetalView.swift */; };
+		497B78A71DF502E0002A6268 /* MetalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B78A61DF502E0002A6268 /* MetalViewController.swift */; };
+		497B78AA1DF503A1002A6268 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B78A91DF503A1002A6268 /* Vertex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		497B78881DF13BCF002A6268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		497B789B1DF3E6AC002A6268 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		497B789D1DF3E6AC002A6268 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		497B78A11DF4FE64002A6268 /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetalView.swift; path = View/MetalView.swift; sourceTree = "<group>"; };
+		497B78A61DF502E0002A6268 /* MetalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalViewController.swift; sourceTree = "<group>"; };
+		497B78A91DF503A1002A6268 /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,8 @@
 				497B78721DF13BCF002A6268 /* Info.plist */,
 				497B78A01DF3E6BD002A6268 /* Storyboard */,
 				497B789A1DF3E6AC002A6268 /* Shader */,
+				497B78A81DF503A0002A6268 /* Model */,
+				497B78A31DF4FE68002A6268 /* View */,
 				497B789C1DF3E6AC002A6268 /* ViewController */,
 			);
 			path = MetalXmas;
@@ -139,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				497B789D1DF3E6AC002A6268 /* ViewController.swift */,
+				497B78A61DF502E0002A6268 /* MetalViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -150,6 +159,22 @@
 				497B786F1DF13BCF002A6268 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		497B78A31DF4FE68002A6268 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				497B78A11DF4FE64002A6268 /* MetalView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		497B78A81DF503A0002A6268 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				497B78A91DF503A1002A6268 /* Vertex.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,9 +312,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497B78A21DF4FE64002A6268 /* MetalView.swift in Sources */,
 				497B789F1DF3E6AC002A6268 /* ViewController.swift in Sources */,
+				497B78A71DF502E0002A6268 /* MetalViewController.swift in Sources */,
 				497B789E1DF3E6AC002A6268 /* Shaders.metal in Sources */,
 				497B78671DF13BCF002A6268 /* AppDelegate.swift in Sources */,
+				497B78AA1DF503A1002A6268 /* Vertex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
