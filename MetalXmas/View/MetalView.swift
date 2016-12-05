@@ -69,9 +69,9 @@ class MetalView: MTKView {
         colorAttachment?.isBlendingEnabled = true
         colorAttachment?.rgbBlendOperation = .add
         colorAttachment?.alphaBlendOperation = .add
-        colorAttachment?.sourceRGBBlendFactor = .sourceColor
+        colorAttachment?.sourceRGBBlendFactor = .sourceAlpha
         colorAttachment?.sourceAlphaBlendFactor = .sourceAlpha
-        colorAttachment?.destinationRGBBlendFactor = .oneMinusSourceColor
+        colorAttachment?.destinationRGBBlendFactor = .oneMinusSourceAlpha
         colorAttachment?.destinationAlphaBlendFactor = .oneMinusSourceAlpha
         
         // Render pipline を作る
